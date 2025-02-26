@@ -82,6 +82,10 @@ button:hover {
     background-color: #179b7c;
 }
 
+.dn{
+    display: none;
+}
+
 @media (max-width: 768px) {
     .form-row {
         flex-direction: column;

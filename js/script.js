@@ -12,7 +12,7 @@ function cargarBodegas() {
         .then(response => response.json())
         .then(data => {
             const selectBodega = document.getElementById('bodega');
-            selectBodega.innerHTML = '<option value="">Seleccione una bodega</option>';
+            selectBodega.innerHTML = '<option value="" class="dn"></option>';
             data.forEach(bodega => {
                 selectBodega.innerHTML += `<option value="${bodega.id}">${bodega.nombre}</option>`;
             });
@@ -26,14 +26,14 @@ function cargarSucursales() {
     const selectSucursal = document.getElementById('sucursal');
 
     if (!bodegaId) {
-        selectSucursal.innerHTML = '<option value="">Seleccione una sucursal</option>';
+        selectSucursal.innerHTML = '<option value="" class="dn"></option>';
         return;
     }
 
     fetch(`php/obtener_sucursales.php?bodega_id=${bodegaId}`)
         .then(response => response.json())
         .then(data => {
-            selectSucursal.innerHTML = '<option value="">Seleccione una sucursal</option>';
+            selectSucursal.innerHTML = '<option value="" class="dn"></option>';
             data.forEach(sucursal => {
                 selectSucursal.innerHTML += `<option value="${sucursal.id}">${sucursal.nombre}</option>`;
             });
@@ -47,7 +47,7 @@ function cargarMonedas() {
         .then(response => response.json())
         .then(data => {
             const selectMoneda = document.getElementById('moneda');
-            selectMoneda.innerHTML = '<option value="">Seleccione una moneda</option>';
+            selectMoneda.innerHTML = '<option value="" class="dn"></option>';
             data.forEach(moneda => {
                 selectMoneda.innerHTML += `<option value="${moneda.id}">${moneda.nombre}</option>`;
             });
@@ -74,7 +74,7 @@ function registrarProducto(event) {
                 document.getElementById('formProducto').reset();
                 cargarBodegas();
                 cargarMonedas();
-                document.getElementById('sucursal').innerHTML = '<option value=\"\">Seleccione una sucursal</option>';
+                document.getElementById('sucursal').innerHTML = '<option value="" class="dn"></option>';
             } else {
                 alert(`❌ Error: ${data.error}`);
             }
