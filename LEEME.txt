@@ -1,0 +1,62 @@
+
+LEEME - Formulario de Producto
+
+DESCRIPCION DEL PROYECTO
+Aplicación web para el registro de productos con las siguientes características:
+- Conexión a PostgreSQL
+- Interfaz desarrollada con HTML, CSS (responsivo) y JavaScript puro (peticiones AJAX)
+- Carga dinámica de bodegas, sucursales y monedas
+- Validaciones en frontend y backend
+- Persistencia de datos con relaciones en base de datos
+
+REQUISITOS DEL SISTEMA
+- PHP 8.2 o superior
+- PostgreSQL 16
+- Extensión pdo_pgsql habilitada
+- Navegador web moderno (Chrome, Firefox, Edge)
+
+CONFIGURACION DEL PROYECTO
+
+1) Clonar el repositorio:
+git clone https://github.com/elmerson7/sistema-registro-productos.git
+
+2) Importar la base de datos:
+- Importar el archivo sql/estructura.sql en su entorno de PostgreSQL
+
+3) Configurar la conexión a la base de datos:
+- Editar php/conexion.php con las credenciales locales:
+  define('DB_HOST', 'localhost');
+  define('DB_PORT', '5432');
+  define('DB_NAME', 'app_db');
+  define('DB_USER', 'app_user');
+  define('DB_PASS', 'app_password');
+
+4) Abrir el proyecto en su servidor local:
+- Acceder a la carpeta sistema-registro-productos y configurarlo en su entorno Apache o servidor local.
+
+ESTRUCTURA DEL PROYECTO
+css/
+  style.css               (Estilos del formulario)
+js/
+  script.js               (Logica JS pura, fetch y validaciones)
+php/
+  conexion.php            (Conexion PDO a PostgreSQL)
+  obtener_bodegas.php     (API: Obtener bodegas)
+  obtener_sucursales.php  (API: Obtener sucursales dinamicamente)
+  obtener_monedas.php     (API: Obtener monedas)
+  guardar_producto.php    (API: Guardado del producto y materiales)
+  test_conexion.php       (Script para probar la conexion a la base de datos)
+sql/
+  estructura.sql          (Script SQL para la creacion de la BD)
+index.php                 (Pagina principal con el formulario)
+LEEME.txt                 (Archivo de instrucciones)
+README.md                 (Archivo de instrucciones adicional)
+
+CONSIDERACIONES DE SEGURIDAD
+- Uso de PDO con consultas preparadas para prevenir SQL Injection
+- Validaciones en frontend y backend
+- Manejo de errores con respuestas en formato JSON
+
+NOTAS FINALES
+- Proyecto diseñado para ejecutarse sin Docker, adaptado a entornos locales con PHP y PostgreSQL
+- Peticiones asincronas con fetch() y manejo dinamico del formulario
