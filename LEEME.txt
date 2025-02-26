@@ -1,62 +1,90 @@
-
 LEEME - Formulario de Producto
 
-DESCRIPCION DEL PROYECTO
+Descripción del Proyecto
+------------------------
 Aplicación web para el registro de productos con las siguientes características:
-- Conexión a PostgreSQL
-- Interfaz desarrollada con HTML, CSS (responsivo) y JavaScript puro (peticiones AJAX)
-- Carga dinámica de bodegas, sucursales y monedas
-- Validaciones en frontend y backend
-- Persistencia de datos con relaciones en base de datos
+- Conexión a PostgreSQL.
+- Interfaz desarrollada con HTML, CSS (responsive) y JavaScript puro para peticiones AJAX.
+- Carga dinámica de bodegas, sucursales y monedas.
+- Validaciones completas en frontend y backend.
+- Persistencia de datos con relaciones en base de datos.
+- Opcional: Configuración con Docker para facilitar la ejecución del entorno.
 
-REQUISITOS DEL SISTEMA
-- PHP 8.2 o superior
-- PostgreSQL 16
-- Extensión pdo_pgsql habilitada
-- Navegador web moderno (Chrome, Firefox, Edge)
+Requisitos del Sistema
+-----------------------
+- PHP 8.2 o superior.
+- PostgreSQL 16.
+- Extensión pdo_pgsql habilitada.
+- Navegador web moderno (Chrome, Firefox, Edge).
+- Opcional: Docker y Docker Compose instalados.
 
-CONFIGURACION DEL PROYECTO
-
+Configuración del Proyecto
+--------------------------
 1) Clonar el repositorio:
-git clone https://github.com/elmerson7/sistema-registro-productos.git
+   git clone https://github.com/elmerson7/sistema-registro-productos.git
 
 2) Importar la base de datos:
-- Importar el archivo sql/estructura.sql en su entorno de PostgreSQL
+   - Importar el archivo sql/estructura.sql en su entorno de PostgreSQL.
 
 3) Configurar la conexión a la base de datos:
-- Editar php/conexion.php con las credenciales locales:
-  define('DB_HOST', 'localhost');
-  define('DB_PORT', '5432');
-  define('DB_NAME', 'app_db');
-  define('DB_USER', 'app_user');
-  define('DB_PASS', 'app_password');
+   - Editar php/conexion.php con las credenciales locales:
+   
+     define('DB_HOST', 'localhost'); // o 127.0.0.1 o 'postgres' nombre del servicio de Docker
+     define('DB_PORT', '5432');
+     define('DB_NAME', 'app_db');
+     define('DB_USER', 'app_user');
+     define('DB_PASS', 'app_password');
 
 4) Abrir el proyecto en su servidor local:
-- Acceder a la carpeta sistema-registro-productos y configurarlo en su entorno Apache o servidor local.
+   - Acceder a la carpeta sistema-registro-productos y configurarlo en su entorno Apache o servidor local disponible.
 
-ESTRUCTURA DEL PROYECTO
+Configuración opcional con Docker
+---------------------------------
+Si prefiere levantar el proyecto con Docker:
+
+1) Ejecutar Docker Compose:
+   docker-compose up -d --build
+
+2) Acceder al proyecto:
+   - Abrir el navegador en http://localhost:8000.
+
+Archivos relacionados a Docker:
+- Dockerfile: Configuración del entorno PHP 8.2 con pdo_pgsql.
+- docker-compose.yml: Configuración de servicios para PHP y PostgreSQL.
+
+Estructura del Proyecto
+-----------------------
 css/
-  style.css               (Estilos del formulario)
+  style.css               -> Estilos del formulario
+
 js/
-  script.js               (Logica JS pura, fetch y validaciones)
+  script.js               -> Lógica JS pura (fetch y validaciones)
+
 php/
-  conexion.php            (Conexion PDO a PostgreSQL)
-  obtener_bodegas.php     (API: Obtener bodegas)
-  obtener_sucursales.php  (API: Obtener sucursales dinamicamente)
-  obtener_monedas.php     (API: Obtener monedas)
-  guardar_producto.php    (API: Guardado del producto y materiales)
-  test_conexion.php       (Script para probar la conexion a la base de datos)
+  conexion.php            -> Conexión PDO a PostgreSQL
+  obtener_bodegas.php     -> API: Obtener bodegas
+  obtener_sucursales.php  -> API: Obtener sucursales dinámicamente
+  obtener_monedas.php     -> API: Obtener monedas
+  guardar_producto.php    -> API: Guardado del producto y materiales
+  test_conexion.php       -> Script para probar la conexión a la base de datos
+
 sql/
-  estructura.sql          (Script SQL para la creacion de la BD)
-index.php                 (Pagina principal con el formulario)
-LEEME.txt                 (Archivo de instrucciones)
-README.md                 (Archivo de instrucciones adicional)
+  estructura.sql          -> Script SQL para la creación de la BD
 
-CONSIDERACIONES DE SEGURIDAD
-- Uso de PDO con consultas preparadas para prevenir SQL Injection
-- Validaciones en frontend y backend
-- Manejo de errores con respuestas en formato JSON
+Dockerfile                -> Configuración de entorno PHP para Docker
+docker-compose.yml        -> Configuración de servicios Docker
+index.php                 -> Página principal con el formulario
+LEEME.txt                 -> Archivo de instrucciones
+README.md                 -> También archivo de instrucciones
 
-NOTAS FINALES
-- Proyecto diseñado para ejecutarse sin Docker, adaptado a entornos locales con PHP y PostgreSQL
-- Peticiones asincronas con fetch() y manejo dinamico del formulario
+Consideraciones de Seguridad
+----------------------------
+- Uso de PDO con consultas preparadas para prevenir SQL Injection.
+- Validaciones en frontend y backend.
+- Manejo de errores con respuestas en formato JSON.
+
+Notas Finales
+-------------
+- Proyecto diseñado para ejecutarse sin Docker, adaptado a entornos locales con PHP y PostgreSQL.
+- Peticiones asíncronas con fetch() y manejo dinámico del formulario.
+- Docker y Docker Compose incluidos para simplificar la configuración del entorno de desarrollo.

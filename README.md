@@ -7,6 +7,7 @@ Aplicación web para el registro de productos con las siguientes característica
 - 🔄 Carga dinámica de bodegas, sucursales y monedas.
 - 🛡️ Validaciones completas en frontend y backend.
 - 💾 Persistencia de datos con relaciones en base de datos.
+- 🐳 **Opcional**: Configuración con **Docker** para facilitar la ejecución del entorno.
 
 ---
 
@@ -15,6 +16,7 @@ Aplicación web para el registro de productos con las siguientes característica
 - PostgreSQL 16.
 - Extensión `pdo_pgsql` habilitada.
 - Navegador web moderno (Chrome, Firefox, Edge).
+- **Opcional:** Docker y Docker Compose instalados.
 
 ---
 
@@ -31,7 +33,7 @@ git clone https://github.com/elmerson7/sistema-registro-productos.git
 3️⃣ **Configurar la conexión a la base de datos:**
 - Editar `php/conexion.php` con las credenciales locales:
   ```php
-  define('DB_HOST', 'localhost');
+  define('DB_HOST', 'localhost'); // o 127.0.0.1 o 'postgres' nombre del servicio de Docker
   define('DB_PORT', '5432');
   define('DB_NAME', 'app_db');
   define('DB_USER', 'app_user');
@@ -40,6 +42,24 @@ git clone https://github.com/elmerson7/sistema-registro-productos.git
 
 4️⃣ **Abrir el proyecto en su servidor local:**
 - Acceder a la carpeta `sistema-registro-productos` y configurarlo en su entorno Apache o servidor local disponible.
+
+---
+
+## 🐳 **Configuración opcional con Docker**
+
+Si prefiere levantar el proyecto con Docker:
+
+1️⃣ **Ejecutar Docker Compose:**
+```bash
+docker-compose up -d --build
+```
+
+2️⃣ **Acceder al proyecto:**
+- Abrir el navegador en `http://localhost:8000`.
+
+### 📁 **Archivos relacionados a Docker**:
+- `Dockerfile`: Configuración del entorno PHP 8.2 con `pdo_pgsql`.
+- `docker-compose.yml`: Configuración de servicios para PHP y PostgreSQL.
 
 ---
 
@@ -58,9 +78,11 @@ git clone https://github.com/elmerson7/sistema-registro-productos.git
 │   └── test_conexion.php       # Script para probar la conexión a la base de datos
 ├── sql
 │   └── estructura.sql          # Script SQL para la creación de la BD
+├── Dockerfile                  # Configuración de entorno PHP para Docker
+├── docker-compose.yml          # Configuración de servicios Docker
 ├── index.php                   # Página principal con el formulario
 ├── LEEME.txt                   # Archivo de instrucciones
-└── README.md                   # Tambien archivo de instrucciones
+└── README.md                   # También archivo de instrucciones
 ```
 
 ---
@@ -75,5 +97,5 @@ git clone https://github.com/elmerson7/sistema-registro-productos.git
 ## 🏁 **Notas Finales**
 - 🖇️ Proyecto diseñado para ejecutarse sin Docker, adaptado a entornos locales con PHP y PostgreSQL.
 - 🌐 Peticiones asíncronas con **fetch()** y manejo dinámico del formulario.
-
+- 🐳 Docker y Docker Compose incluidos para simplificar la configuración del entorno de desarrollo.
 

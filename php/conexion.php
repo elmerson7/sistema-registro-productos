@@ -1,7 +1,7 @@
 <?php
 
 // Configuración de la conexión a PostgreSQL
-define('DB_HOST', 'localhost'); // o 127.0.0.1
+define('DB_HOST', 'localhost'); // o 127.0.0.1 o 'postgres' nombre del servicio de Docker
 define('DB_PORT', '5432');
 define('DB_NAME', 'app_db');
 define('DB_USER', 'app_user');
